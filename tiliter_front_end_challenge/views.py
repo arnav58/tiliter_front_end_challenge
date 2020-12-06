@@ -1,5 +1,3 @@
-import json
-
 from django.http import JsonResponse
 from django.shortcuts import render
 from tiliter_front_end_challenge.services import *

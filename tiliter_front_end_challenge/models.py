@@ -22,7 +22,7 @@ class Theater(models.Model):
         return TheaterMovieListing.objects.filter(theater=self).order_by("movie__title")
 
     def get_filtered_movie_listed(self, search_term):
-        return TheaterMovieListing.objects.filter(theater=self, movie__title__icontains=search_term.lower())
+        return TheaterMovieListing.objects.filter(theater=self, movie__title__icontains=search_term.lower()).order_by("movie__title")
 
 
 class TheaterMovieListing(models.Model):
