@@ -1,0 +1,40 @@
+{% load static %}
+{% load template_tags_extra %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Showtimes</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "css/listings.css" %}" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="header-controls">
+                <div class="display-inline-block nav-pills-div">
+                    <ul class="nav nav-tabs">
+                        {% for theater in theaters %}
+                            <li{% if forloop.first %} class="active"{% endif %}><a href="#{{ theater.name|format_name }}" data-toggle="tab">{{ theater.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="showtime-info tab-content">
+                {% for theater in theaters %}
+                    <div id="{{ theater.name|format_name }}" class="tab-pane {% if forloop.first %}active{% endif %}">
+                        {% for movie_listed in theater.get_all_movies_listed %}
+                            <div class="movie-listing">
+                                {{ movie_listed.movie.title }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

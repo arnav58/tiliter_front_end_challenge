@@ -1,0 +1,14 @@
+.content-wrapper {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.content {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.nav-tabs li {
+    width: 33%;
+    text-align: center;
+}
