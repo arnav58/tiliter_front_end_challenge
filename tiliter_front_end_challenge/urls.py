@@ -20,4 +20,5 @@ from tiliter_front_end_challenge import views
 urlpatterns = [
     url(r'admin/', admin.site.urls),
     url(r'^$', views.listings),
+    url(r'^get_listings$', views.get_listings)
 ]

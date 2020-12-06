@@ -19,36 +19,16 @@
                 <div class="display-inline-block nav-pills-div">
                     <ul class="nav nav-tabs">
                         {% for theater in theaters %}
-                            <li{% if forloop.first %} class="active"{% endif %}><a href="#{{ theater.name|format_name }}" data-toggle="tab">{{ theater.name }}</a></li>
+                            <li{% if forloop.first %} class="active"{% endif %}><a class="nav-tab" href="#{{ theater.name|format_name }}" data-toggle="tab" data-theater-id="{{ theater.id }}">{{ theater.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
-            <div class="showtime-info tab-content">
-                {% for theater in theaters %}
-                    <div id="{{ theater.name|format_name }}" class="tab-pane {% if forloop.first %}active{% endif %}">
-                        {% for movie_listed in theater.get_all_movies_listed %}
-                            <div class="movie-listing">
-                                <div class="listing-poster inline-block">
-                                    <img src="{{ movie_listed.movie.poster_url }}">
-                                </div>
-                                <div class="listing-details inline-block">
-                                    <div class="movie-name-and-rating">
-                                        <div class="movie-name inline-block">{{ movie_listed.movie.title }}</div>
-                                        <div class="movie-rating inline-block">({{ movie_listed.movie.rating }})</div>
-                                    </div>
-                                    <div class="movie-showtimes">
-                                        {% for showtime in movie_listed.get_all_showtimes %}
-                                            <div class="movie-showtime inline-block">{{ showtime.showtime }}</div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endfor %}
+            <div class="showtime-info tab-content" id="listingsTable">
+                {{ movie_listing_details_raw|safe }}
             </div>
         </div>
     </div>
+    <script src="{% static "js/listings.js" %}" type="text/javascript"></script>
 </body>
 </html>

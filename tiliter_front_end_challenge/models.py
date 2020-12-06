@@ -21,6 +21,9 @@ class Theater(models.Model):
     def get_all_movies_listed(self):
         return TheaterMovieListing.objects.filter(theater=self).order_by("movie__title")
 
+    def get_filtered_movie_listed(self, search_term):
+        return TheaterMovieListing.objects.filter(theater=self, movie__title__icontains=search_term.lower())
+
 
 class TheaterMovieListing(models.Model):
     theater = models.ForeignKey(Theater, on_delete=models.CASCADE)
