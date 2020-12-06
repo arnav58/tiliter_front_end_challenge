@@ -1,5 +1,14 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
 .content-wrapper {
-    width: 980px;
+    width: 680px;
     margin: 0 auto;
 }
 
@@ -11,4 +20,37 @@
 .nav-tabs li {
     width: 33%;
     text-align: center;
+}
+
+.movie-listing {
+    width: 100%;
+    border: 1px solid gray;
+    max-height: 200px;
+}
+
+.movie-listing .listing-poster {
+    width: 20%;
+}
+
+.movie-listing .listing-poster img {
+    height: 180px;
+    padding: 10px;
+}
+
+.movie-listing .listing-details {
+    width: 79%;
+}
+
+.movie-listing .listing-details .movie-name {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.movie-listing .listing-details .movie-rating {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.movie-listing .listing-details .movie-showtime {
+    padding: 2px;
 }

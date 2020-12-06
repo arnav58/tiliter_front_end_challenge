@@ -7,6 +7,7 @@
     <title>Movie Showtimes</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static "css/listings.css" %}" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -28,7 +29,20 @@
                     <div id="{{ theater.name|format_name }}" class="tab-pane {% if forloop.first %}active{% endif %}">
                         {% for movie_listed in theater.get_all_movies_listed %}
                             <div class="movie-listing">
-                                {{ movie_listed.movie.title }}
+                                <div class="listing-poster inline-block">
+                                    <img src="{{ movie_listed.movie.poster_url }}">
+                                </div>
+                                <div class="listing-details inline-block">
+                                    <div class="movie-name-and-rating">
+                                        <div class="movie-name inline-block">{{ movie_listed.movie.title }}</div>
+                                        <div class="movie-rating inline-block">({{ movie_listed.movie.rating }})</div>
+                                    </div>
+                                    <div class="movie-showtimes">
+                                        {% for showtime in movie_listed.get_all_showtimes %}
+                                            <div class="movie-showtime inline-block">{{ showtime.showtime }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>

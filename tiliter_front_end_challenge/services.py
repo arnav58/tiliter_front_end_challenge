@@ -2,9 +2,9 @@ from tiliter_front_end_challenge.models import *
 import json
 
 
-def add_data_from_json_files():
+def load_data_from_json_files(force_update=False):
 
-    if Movie.objects.exists():
+    if Movie.objects.exists() and not force_update:
         return
 
     movie_meta_f = open('data/movie_metadata.json').read()

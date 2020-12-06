@@ -19,7 +19,7 @@ class Theater(models.Model):
         return self.name
 
     def get_all_movies_listed(self):
-        return TheaterMovieListing.objects.filter(theater=self)
+        return TheaterMovieListing.objects.filter(theater=self).order_by("movie__title")
 
 
 class TheaterMovieListing(models.Model):
@@ -28,6 +28,9 @@ class TheaterMovieListing(models.Model):
 
     def __str__(self):
         return f"{self.theater.name} showing {self.movie.title}"
+
+    def get_all_showtimes(self):
+        return MovieShowtime.objects.filter(movie_listing=self)
 
 
 class MovieShowtime(models.Model):
