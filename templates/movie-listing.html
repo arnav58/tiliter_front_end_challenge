@@ -1,11 +1,11 @@
 <div class="movie-listing">
-    <div class="listing-poster inline-block">
+    <div class="listing-poster">
         <img src="{{ movie_listing.movie.poster_url }}">
     </div>
-    <div class="listing-details inline-block">
+    <div class="listing-details">
         <div class="movie-name-and-rating">
-            <div class="movie-name inline-block">{{ movie_listing.movie.title }}</div>
-            <div class="movie-rating inline-block">({{ movie_listing.movie.rating }})</div>
+            <div class="movie-name">{{ movie_listing.movie.title }}</div>
+            <div class="movie-rating">({{ movie_listing.movie.rating }})</div>
         </div>
         <div class="movie-showtimes">
             {% for showtime in movie_listing.get_all_showtimes %}

@@ -8,7 +8,7 @@ body {
 }
 
 .content-wrapper {
-    width: 680px;
+    max-width: 680px;
     margin: 0 auto;
 }
 
@@ -28,6 +28,10 @@ body {
     text-align: center;
 }
 
+.nav-tabs li.active a, .nav-tabs li.active a:focus, .nav-tabs li.active a:hover {
+    color: orange;
+}
+
 .movie-listing {
     width: 100%;
     border: 1px solid gray;
@@ -36,6 +40,7 @@ body {
 }
 
 .movie-listing .listing-poster {
+    display: inline-block;
     width: 20%;
 }
 
@@ -45,20 +50,64 @@ body {
 }
 
 .movie-listing .listing-details {
+    display: inline-block;
     width: 80%;
     padding: 30px 20px;
 }
 
 .movie-listing .listing-details .movie-name {
+    display: inline-block;
     font-size: 20px;
     font-weight: 800;
 }
 
 .movie-listing .listing-details .movie-rating {
+    display: inline-block;
     font-size: 12px;
     font-weight: 400;
 }
 
 .movie-listing .listing-details .movie-showtime {
     padding: 2px;
+}
+
+
+@media (max-width: 600px) {
+    .content-wrapper {
+        width: 80%;
+    }
+
+    .nav-tabs li {
+        width: 100%;
+        margin: 2px;
+    }
+
+    .movie-listing {
+        display: block;
+        max-height: 500px;
+    }
+
+    .movie-listing .listing-poster {
+        display: block;
+        width: 100%;
+    }
+
+    .movie-listing .listing-poster img {
+        display: block;
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .movie-listing .listing-details {
+        display: block;
+        width: 100%;
+    }
+
+    .nav-tabs li.active a, .nav-tabs li.active a:focus, .nav-tabs li.active a:hover {
+        border: 1px solid #ddd;
+        background: orange;
+        color: white;
+    }
+
 }

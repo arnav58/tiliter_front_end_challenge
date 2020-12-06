@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Movie Showtimes</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -19,7 +20,7 @@
                 <input id="searchfield" name="q" type="text" placeholder="Search movies..."/>
             </div>
             <div class="header-controls">
-                <div class="display-inline-block nav-pills-div">
+                <div class="nav-pills-div">
                     <ul class="nav nav-tabs">
                         {% for theater in theaters %}
                             <li{% if forloop.first %} class="active"{% endif %}><a class="nav-tab" href="#{{ theater.name|format_name }}" data-toggle="tab" data-theater-id="{{ theater.id }}">{{ theater.name }}</a></li>
